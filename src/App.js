@@ -5,6 +5,7 @@ import MintButton from './components/svg/MintWoodenSign'
 
 import bubbleMint from './assets/bubble mint.svg'
 
+import BoxIcon from './assets/box icon.png'
 import heroImg from './assets/mint hero.png'
 
 import { connect } from './redux/blockchain/blockchainActions'
@@ -15,11 +16,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import MintedModal from './components/Modal'
+
 function App() {
     const dispatch = useDispatch()
     const blockchain = useSelector((state) => state.blockchain)
     const data = useSelector((state) => state.data)
     const [claimingNft, setClaimingNft] = useState(false)
+    const [minted, setMinted] = useState(false)
     const [connectedWallet, setConnectedWallet] = useState(false)
     const [mintAmount, setMintAmount] = useState(1)
 
@@ -81,6 +85,7 @@ function App() {
                         // setFeedback(`WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`)
                         toast.success(`WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`)
                         setClaimingNft(false)
+                        setMinted(true)
                         dispatch(fetchData(blockchain.account))
                     })
             }
@@ -140,94 +145,110 @@ function App() {
     return (
         <div className="font-grandstander">
             <ToastContainer />
+            {minted && <MintedModal />}
+            {claimingNft && (
+                <div className="flex h-screen bg-black/70 backdrop-blur-3xl absolute w-full z-10">
+                    <div className="m-auto text-white">
+                        <div className="flex justify-center mb-5">
+                            <img className="w-12 animate-up-and-down" src={BoxIcon} alt="" />
+                        </div>
+                        <h4 className="text-xl">Mint in Progress...</h4>
+                    </div>
+                </div>
+            )}
             <div className="relative">
                 <div className="absolute max-w-full inset-0 -z-20 min-h-screen bg-no-repeat bg-[url('./assets/background.svg')] bg-cover"></div>
                 <div className="w-4/5 mx-auto">
                     <div className="flex h-screen">
-                        <div className="m-auto">
-                            <div className="flex items-center space-x-5">
-                                <div
-                                    className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        decrementMintAmount()
-                                    }}
-                                >
-                                    <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                    <span className="absolute top-6 right-9">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                                        </svg>
-                                    </span>
+                        <div className="m-auto w-1/2">
+                            <h1 className="text-center font-bold text-5xl text-gray-800">Headbox Squad</h1>
+                            <div className="flex flex-col items-center ml-auto mt-8">
+                                <div className="flex items-center space-x-5">
+                                    <div
+                                        className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            decrementMintAmount()
+                                        }}
+                                    >
+                                        <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
+                                        <span className="absolute top-6 right-9">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div className="relative">
+                                        <AmountButton />
+                                        <h2 className={`absolute text-5xl top-6 ${mintAmount >= 10 ? 'left-20' : 'left-[5.5rem]'} text-gray-800 font-bold`}>{mintAmount}</h2>
+                                    </div>
+                                    <div
+                                        className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            incrementMintAmount()
+                                        }}
+                                    >
+                                        <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
+                                        <span className="absolute top-6 right-9">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="relative">
-                                    <AmountButton />
-                                    <h2 className={`absolute text-5xl top-6 ${mintAmount >= 10 ? 'left-20' : 'left-[5.5rem]'} text-gray-800 font-bold`}>{mintAmount}</h2>
-                                </div>
-                                <div
-                                    className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        incrementMintAmount()
-                                    }}
-                                >
-                                    <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                    <span className="absolute top-6 right-9">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="mt-8 flex justify-center">
-                                <div className="cursor-pointer relative hover:-mt-1 transition-all duration-150 ease-in-out group">
-                                    {blockchain.account === '' || blockchain.smartContract === null ? (
-                                        <div
-                                            onClick={(e) => {
-                                                e.preventDefault()
-                                                dispatch(connect())
-                                                getData()
-                                            }}
-                                        >
-                                            <MintButton />
-                                            <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">Connect</h3>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            {data.loading ? (
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.preventDefault()
-                                                        dispatch(connect())
-                                                        getData()
-                                                    }}
-                                                >
-                                                    <MintButton />
-                                                    <h3 className="absolute top-6 left-6 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
-                                                        Loading...
-                                                    </h3>
-                                                </div>
-                                            ) : (
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.preventDefault()
-                                                        claimNFTs()
-                                                        getData()
-                                                    }}
-                                                >
-                                                    <MintButton />
+                                <div className="mt-8">
+                                    <div className="cursor-pointer relative hover:-mt-1 transition-all duration-150 ease-in-out group">
+                                        {blockchain.account === '' || blockchain.smartContract === null ? (
+                                            <div
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    dispatch(connect())
+                                                    getData()
+                                                }}
+                                            >
+                                                <MintButton />
+                                                <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
+                                                    Connect
+                                                </h3>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                {data.loading ? (
+                                                    <div
+                                                        onClick={(e) => {
+                                                            e.preventDefault()
+                                                            dispatch(connect())
+                                                            getData()
+                                                        }}
+                                                    >
+                                                        <MintButton />
+                                                        <h3 className="absolute top-6 left-6 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
+                                                            Loading...
+                                                        </h3>
+                                                    </div>
+                                                ) : (
+                                                    <div
+                                                        onClick={(e) => {
+                                                            e.preventDefault()
+                                                            claimNFTs()
+                                                            getData()
+                                                        }}
+                                                    >
+                                                        <MintButton />
 
-                                                    <h3 className="absolute top-6 left-6 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
-                                                        Mint Now
-                                                    </h3>
-                                                </div>
-                                            )}
-                                        </>
-                                    )}
+                                                        <h3 className="absolute top-6 left-6 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
+                                                            Mint Now
+                                                        </h3>
+                                                    </div>
+                                                )}
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="m-auto">
+                        <div className="m-auto w-1/2">
                             <div className="ml-auto w-[80%] relative">
                                 <img className="" src={heroImg} alt="" />
                                 <img className="absolute top-10 -left-6 animate-wiggle" src={bubbleMint} alt="" />
