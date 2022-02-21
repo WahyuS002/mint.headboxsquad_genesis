@@ -17,13 +17,17 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import MintedModal from './components/Modal'
+import useModal from './hooks/useModal'
+import { AnimatePresence } from 'framer-motion'
 
 function App() {
+    const { mintedModalOpen, closeMintedModal, openMintedModal } = useModal()
+
     const dispatch = useDispatch()
     const blockchain = useSelector((state) => state.blockchain)
     const data = useSelector((state) => state.data)
     const [claimingNft, setClaimingNft] = useState(false)
-    const [minted, setMinted] = useState(false)
+    // const [isMinted, setIsMinted] = useState(false)
     const [connectedWallet, setConnectedWallet] = useState(false)
     const [mintAmount, setMintAmount] = useState(1)
 
@@ -85,7 +89,8 @@ function App() {
                         // setFeedback(`WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`)
                         toast.success(`WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`)
                         setClaimingNft(false)
-                        setMinted(true)
+                        openMintedModal()
+                        console.log('OPEN MINTED MODAL', mintedModalOpen)
                         dispatch(fetchData(blockchain.account))
                     })
             }
@@ -145,7 +150,9 @@ function App() {
     return (
         <div className="font-grandstander">
             <ToastContainer />
-            {minted && <MintedModal />}
+            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+                {mintedModalOpen && <MintedModal handleClose={closeMintedModal} />}
+            </AnimatePresence>
             {claimingNft && (
                 <div className="flex h-screen bg-black/70 backdrop-blur-3xl absolute w-full z-10">
                     <div className="m-auto text-white">
