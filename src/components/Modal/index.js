@@ -26,7 +26,7 @@ export default function Modal({ handleClose }) {
                         },
                     }}
                 >
-                    <img src={MintedImg} alt="" />
+                    <img draggable={false} src={MintedImg} alt="" />
                     <p className="absolute right-14 top-52 -rotate-3 text-white font-semibold text-lg leading-snug">
                         Congrats! You succeessfully <br /> minted your Headbox, stay <br /> tuned to see what you got <br /> in your box!
                     </p>

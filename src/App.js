@@ -1,5 +1,6 @@
 import LeftButton from './components/svg/LeftWoodenSign'
 import AmountButton from './components/svg/AmountWoodenSign'
+import SmallAmountButton from './components/svg/SmallAmountWoodenSign'
 import RightButton from './components/svg/RightWoodenSign'
 import MintButton from './components/svg/MintWoodenSign'
 
@@ -148,7 +149,7 @@ function App() {
     }, [blockchain.account])
 
     return (
-        <div className="font-grandstander">
+        <div className="font-grandstander selection:bg-purple-500">
             <ToastContainer />
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {mintedModalOpen && <MintedModal handleClose={closeMintedModal} />}
@@ -166,11 +167,14 @@ function App() {
             <div className="relative">
                 <div className="absolute max-w-full inset-0 -z-20 min-h-screen bg-no-repeat bg-[url('./assets/background.svg')] bg-cover"></div>
                 <div className="w-4/5 mx-auto">
-                    <div className="flex h-screen">
-                        <div className="m-auto w-1/2">
-                            <h1 className="text-center font-bold text-5xl text-gray-800">Headbox Squad</h1>
+                    <div className="flex flex-col-reverse md:flex-row md:h-screen">
+                        <div className="m-auto md:w-1/2">
+                            <div className="relative">
+                                <h1 className="text-center font-bold text-5xl text-white">Headbox Squad</h1>
+                                <h1 className="text-center font-bold text-5xl absolute -right-[0.2rem] left-0 -bottom-[0.2rem] text-gray-800/40 -z-10">Headbox Squad</h1>
+                            </div>
                             <div className="flex flex-col items-center ml-auto mt-8">
-                                <div className="flex items-center space-x-5">
+                                <div className="flex flex-wrap items-center space-x-5">
                                     <div
                                         className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
                                         onClick={(e) => {
@@ -179,15 +183,26 @@ function App() {
                                         }}
                                     >
                                         <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                        <span className="absolute top-6 right-9">
+                                        <span className="absolute top-3 md:top-6 right-6 md:right-9">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                                             </svg>
                                         </span>
                                     </div>
                                     <div className="relative">
-                                        <AmountButton />
-                                        <h2 className={`absolute text-5xl top-6 ${mintAmount >= 10 ? 'left-20' : 'left-[5.5rem]'} text-gray-800 font-bold`}>{mintAmount}</h2>
+                                        <div className="hidden md:block">
+                                            <AmountButton />
+                                        </div>
+                                        <div className="block md:hidden">
+                                            <SmallAmountButton />
+                                        </div>
+                                        <h2
+                                            className={`absolute text-4xl md:text-5xl top-5 md:top-6 ${
+                                                mintAmount >= 10 ? 'left-10 md:left-20' : 'left-[3rem] md:left-[5.5rem]'
+                                            } text-gray-800 font-bold`}
+                                        >
+                                            {mintAmount}
+                                        </h2>
                                     </div>
                                     <div
                                         className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
@@ -197,7 +212,7 @@ function App() {
                                         }}
                                     >
                                         <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                        <span className="absolute top-6 right-9">
+                                        <span className="absolute top-3 md:top-6 right-6 md:right-9">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                                             </svg>
@@ -255,10 +270,10 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className="m-auto w-1/2">
-                            <div className="ml-auto w-[80%] relative">
+                        <div className="md:w-1/2 mt-36 mb-24 md:m-auto">
+                            <div className="ml-auto w-[95%] md:w-[80%] relative">
                                 <img className="" src={heroImg} alt="" />
-                                <img className="absolute top-10 -left-6 animate-wiggle" src={bubbleMint} alt="" />
+                                <img className="absolute -top-10 -left-12 md:top-10 md:-left-6 animate-wiggle" src={bubbleMint} alt="" />
                             </div>
                         </div>
                     </div>
