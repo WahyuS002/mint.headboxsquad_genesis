@@ -6,7 +6,6 @@ import MintButton from './components/svg/MintWoodenSign'
 
 import bubbleMint from './assets/bubble mint.svg'
 
-import BoxIcon from './assets/box icon.png'
 import heroImg from './assets/mint hero.png'
 
 import { connect } from './redux/blockchain/blockchainActions'
@@ -18,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import MintedModal from './components/Modal'
+import Loading from './components/Loading'
 import useModal from './hooks/useModal'
 import { AnimatePresence } from 'framer-motion'
 
@@ -158,7 +158,7 @@ function App() {
                 <div className="flex h-screen bg-black/70 backdrop-blur-3xl absolute w-full z-10">
                     <div className="m-auto text-white">
                         <div className="flex justify-center mb-5">
-                            <img className="w-12 animate-up-and-down" src={BoxIcon} alt="" />
+                            <Loading />
                         </div>
                         <h4 className="text-xl">Mint in Progress...</h4>
                     </div>
@@ -183,7 +183,7 @@ function App() {
                                         }}
                                     >
                                         <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                        <span className="absolute top-3 md:top-6 right-6 md:right-9">
+                                        <span className="absolute top-3 md:top-5 right-6 md:right-8">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                                             </svg>
@@ -212,7 +212,7 @@ function App() {
                                         }}
                                     >
                                         <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                        <span className="absolute top-3 md:top-6 right-6 md:right-9">
+                                        <span className="absolute top-3 md:top-5 right-6 md:right-8">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                                             </svg>

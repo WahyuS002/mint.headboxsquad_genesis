@@ -27,16 +27,16 @@ export default function Modal({ handleClose }) {
                     }}
                 >
                     <img draggable={false} src={MintedImg} alt="" />
-                    <p className="absolute right-14 top-52 -rotate-3 text-white font-semibold text-lg leading-snug">
+                    <p className="absolute right-14 top-48 text-white font-semibold text-lg leading-snug">
                         Congrats! You succeessfully <br /> minted your Headbox, stay <br /> tuned to see what you got <br /> in your box!
                     </p>
                     <button
-                        className="absolute left-56 bottom-44 -rotate-3 px-12 text-lg font-bold text-white py-2 rounded-md bg-[#9B92FF] border-4 border-white z-10 hover:bottom-[11.2rem] hover:left-[13.8rem] transition-all duration-150 ease-in-out hover:bg-[#8781d6]"
+                        className="absolute left-56 bottom-44 px-12 text-lg font-bold text-white py-2 rounded-md bg-[#9B92FF] border-4 border-white z-10 hover:bg-[#8781d6] hover:left-[14.2rem] hover:bottom-[10.8rem] transition-all duration-300 ease-in-out"
                         onClick={handleClose}
                     >
                         FINISH
                     </button>
-                    <button className="absolute left-56 bottom-44 -rotate-3 px-12 text-lg font-bold text-white py-2 rounded-md bg-black border-4 border-black">FINISH</button>
+                    <button className="absolute left-[14.2rem] bottom-[10.8rem] px-12 text-lg font-bold text-white py-2 rounded-md bg-black border-4 border-black">FINISH</button>
                 </motion.div>
             </div>
         </Backdrop>
