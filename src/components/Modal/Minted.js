@@ -3,7 +3,7 @@ import MintedImg from '../../assets/minted.png'
 import { motion } from 'framer-motion'
 import Backdrop from '../Backdrop'
 
-export default function Modal({ handleClose }) {
+export default function Minted({ handleClose }) {
     return (
         <Backdrop onClick={handleClose}>
             <div className="flex justify-center overflow-hidden">

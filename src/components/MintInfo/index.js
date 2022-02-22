@@ -38,7 +38,7 @@ export default function MintInfo() {
 
     useEffect(() => {
         getConfig()
-    })
+    }, [])
 
     useEffect(() => {
         getData()

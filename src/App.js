@@ -16,7 +16,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import MintedModal from './components/Modal'
+import MintedModal from './components/Modal/Minted'
+import PhoneModal from './components/Modal/Phone'
 import Loading from './components/Loading'
 import useModal from './hooks/useModal'
 import { AnimatePresence } from 'framer-motion'
@@ -31,6 +32,7 @@ function App() {
     const [claimingNft, setClaimingNft] = useState(false)
     const [connectedWallet, setConnectedWallet] = useState(false)
     const [mintAmount, setMintAmount] = useState(1)
+    const [mintOnPhone, setMintOnPhone] = useState(false)
 
     const [canIncrementAmount, setCanIncrementAmount] = useState(true)
     const [canDecrementAmount, setCanDecrementAmount] = useState(false)
@@ -152,6 +154,9 @@ function App() {
         <div className="font-grandstander selection:bg-purple-500">
             <ToastContainer />
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+                {mintOnPhone && <PhoneModal handleClose={() => setMintOnPhone(false)} />}
+            </AnimatePresence>
+            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {mintedModalOpen && <MintedModal handleClose={closeMintedModal} />}
             </AnimatePresence>
             {claimingNft && (
@@ -222,18 +227,33 @@ function App() {
                                 <div className="mt-8">
                                     <div className="cursor-pointer relative hover:-mt-1 transition-all duration-150 ease-in-out group">
                                         {blockchain.account === '' || blockchain.smartContract === null ? (
-                                            <div
-                                                onClick={(e) => {
-                                                    e.preventDefault()
-                                                    dispatch(connect())
-                                                    getData()
-                                                }}
-                                            >
-                                                <MintButton />
-                                                <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
-                                                    Connect
-                                                </h3>
-                                            </div>
+                                            <>
+                                                <div
+                                                    onClick={(e) => {
+                                                        e.preventDefault()
+                                                        dispatch(connect())
+                                                        getData()
+                                                    }}
+                                                    className="hidden md:block"
+                                                >
+                                                    <MintButton />
+                                                    <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
+                                                        Connect
+                                                    </h3>
+                                                </div>
+                                                <div
+                                                    onClick={(e) => {
+                                                        e.preventDefault()
+                                                        setMintOnPhone(true)
+                                                    }}
+                                                    className="block md:hidden"
+                                                >
+                                                    <MintButton />
+                                                    <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
+                                                        Connect
+                                                    </h3>
+                                                </div>
+                                            </>
                                         ) : (
                                             <>
                                                 {data.loading ? (
