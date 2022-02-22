@@ -20,6 +20,7 @@ import MintedModal from './components/Modal'
 import Loading from './components/Loading'
 import useModal from './hooks/useModal'
 import { AnimatePresence } from 'framer-motion'
+import MintInfo from './components/MintInfo'
 
 function App() {
     const { mintedModalOpen, closeMintedModal, openMintedModal } = useModal()
@@ -28,7 +29,6 @@ function App() {
     const blockchain = useSelector((state) => state.blockchain)
     const data = useSelector((state) => state.data)
     const [claimingNft, setClaimingNft] = useState(false)
-    // const [isMinted, setIsMinted] = useState(false)
     const [connectedWallet, setConnectedWallet] = useState(false)
     const [mintAmount, setMintAmount] = useState(1)
 
@@ -271,12 +271,13 @@ function App() {
                             </div>
                         </div>
                         <div className="md:w-1/2 mt-36 mb-24 md:m-auto">
-                            <div className="ml-auto w-[95%] md:w-[80%] relative">
-                                <img className="" src={heroImg} alt="" />
-                                <img className="absolute -top-10 -left-12 md:top-10 md:-left-6 animate-wiggle" src={bubbleMint} alt="" />
+                            <div className="ml-auto w-[95%] md:w-[75%] relative">
+                                <img draggable={'false'} className="" src={heroImg} alt="" />
+                                <img draggable={'false'} className="absolute -top-10 -left-12 md:top-10 md:-left-6 animate-wiggle" src={bubbleMint} alt="" />
                             </div>
                         </div>
                     </div>
+                    <MintInfo />
                 </div>
             </div>
         </div>
