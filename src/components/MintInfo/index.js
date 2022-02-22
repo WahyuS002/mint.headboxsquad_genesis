@@ -69,7 +69,7 @@ export default function MintInfo() {
                                 <div className="ml-24 mr-4 py-3">
                                     <div className="flex justify-between">
                                         <p className="text-gray-900 font-semibold">Total Minted</p>
-                                        <p className="text-sm font-bold">
+                                        <p className="text-sm font-bold text-gray-900">
                                             {data.totalSupply} / {CONFIG.MAX_SUPPLY.toLocaleString()}
                                         </p>
                                     </div>
