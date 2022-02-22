@@ -30,7 +30,6 @@ function App() {
     const blockchain = useSelector((state) => state.blockchain)
     const data = useSelector((state) => state.data)
     const [claimingNft, setClaimingNft] = useState(false)
-    const [connectedWallet, setConnectedWallet] = useState(false)
     const [mintAmount, setMintAmount] = useState(1)
     const [mintOnPhone, setMintOnPhone] = useState(false)
 
@@ -127,7 +126,6 @@ function App() {
     const getData = () => {
         if (blockchain.account !== '' && blockchain.smartContract !== null) {
             dispatch(fetchData(blockchain.account))
-            setConnectedWallet(true)
         }
     }
 
