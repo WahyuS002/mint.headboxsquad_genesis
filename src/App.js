@@ -176,50 +176,47 @@ function App() {
                                 <h1 className="text-center font-bold text-5xl text-white">Headbox Squad</h1>
                                 <h1 className="text-center font-bold text-5xl absolute -right-[0.2rem] left-0 -bottom-[0.2rem] text-gray-800/40 -z-10">Headbox Squad</h1>
                             </div>
-                            <div className="flex flex-col items-center ml-auto mt-8">
-                                <div className="flex flex-wrap items-center space-x-5">
-                                    <div
-                                        className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
-                                        onClick={(e) => {
-                                            e.preventDefault()
-                                            decrementMintAmount()
-                                        }}
-                                    >
-                                        <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                        <span className="absolute top-3 md:top-5 right-6 md:right-8">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div className="relative">
-                                        <div className="hidden md:block">
-                                            <AmountButton />
-                                        </div>
-                                        <div className="block md:hidden">
-                                            <SmallAmountButton />
-                                        </div>
-                                        <h2
-                                            className={`absolute text-4xl md:text-5xl top-5 md:top-6 ${
-                                                mintAmount >= 10 ? 'left-10 md:left-20' : 'left-[3rem] md:left-[5.5rem]'
-                                            } text-gray-800 font-bold`}
+                            <div className="flex flex-col items-center ml-auto md:mt-8">
+                                <div className="hidden md:block">
+                                    <div className="flex flex-wrap items-center space-x-5">
+                                        <div
+                                            className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                decrementMintAmount()
+                                            }}
                                         >
-                                            {mintAmount}
-                                        </h2>
-                                    </div>
-                                    <div
-                                        className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
-                                        onClick={(e) => {
-                                            e.preventDefault()
-                                            incrementMintAmount()
-                                        }}
-                                    >
-                                        <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                        <span className="absolute top-3 md:top-5 right-6 md:right-8">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
-                                            </svg>
-                                        </span>
+                                            <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
+                                            <span className="absolute top-3 md:top-5 right-6 md:right-8">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div className="relative">
+                                            <AmountButton />
+                                            <h2
+                                                className={`absolute text-4xl md:text-5xl top-5 md:top-6 ${
+                                                    mintAmount >= 10 ? 'left-10 md:left-20' : 'left-[3rem] md:left-[5.5rem]'
+                                                } text-gray-800 font-bold`}
+                                            >
+                                                {mintAmount}
+                                            </h2>
+                                        </div>
+                                        <div
+                                            className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                incrementMintAmount()
+                                            }}
+                                        >
+                                            <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
+                                            <span className="absolute top-3 md:top-5 right-6 md:right-8">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                                                </svg>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="mt-8">
@@ -288,7 +285,7 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className="md:w-1/2 mt-36 mb-24 md:m-auto">
+                        <div className="md:w-1/2 mt-36 mb-14 md:m-auto">
                             <div className="ml-auto w-[95%] md:w-[75%] relative">
                                 <img draggable={'false'} className="" src={heroImg} alt="" />
                                 <img draggable={'false'} className="absolute -top-10 -left-12 md:top-10 md:-left-6 animate-wiggle" src={bubbleMint} alt="" />
