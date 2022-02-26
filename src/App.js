@@ -62,13 +62,13 @@ function App() {
         } else {
             if (data.currentWalletSupply + mintAmount > CONFIG.MAX_SUPPLY_PER_ADDRESS) {
                 toast.warning('You have exceeded the max limit of minting.')
+            } else if (data.totalSupply >= CONFIG.MAX_SUPPLY) {
+                toast.success('All items have been Sold 🥳')
             } else {
                 let cost = data.cost
                 let gasLimit = CONFIG.GAS_LIMIT
                 let totalCostWei = String(cost * mintAmount)
                 let totalGasLimit = String(gasLimit * mintAmount)
-                console.log('Cost: ', totalCostWei)
-                console.log('Gas limit: ', totalGasLimit)
                 // setFeedback(`Minting your ${CONFIG.NFT_NAME}...`)
                 toast.info(`Minting your ${CONFIG.NFT_NAME}...`)
                 setClaimingNft(true)
@@ -92,7 +92,6 @@ function App() {
                         toast.success(`WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`)
                         setClaimingNft(false)
                         openMintedModal()
-                        console.log('OPEN MINTED MODAL', mintedModalOpen)
                         dispatch(fetchData(blockchain.account))
                     })
             }
