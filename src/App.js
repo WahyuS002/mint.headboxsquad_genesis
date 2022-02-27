@@ -225,8 +225,9 @@ function App() {
                                                 <div
                                                     onClick={(e) => {
                                                         e.preventDefault()
-                                                        dispatch(connect())
-                                                        getData()
+                                                        // dispatch(connect())
+                                                        // getData()
+                                                        toast.info('Minting will open soon.')
                                                     }}
                                                     className="hidden md:block"
                                                 >
@@ -267,8 +268,9 @@ function App() {
                                                     <div
                                                         onClick={(e) => {
                                                             e.preventDefault()
-                                                            claimNFTs()
-                                                            getData()
+                                                            // claimNFTs()
+                                                            // getData()
+                                                            toast.info('Minting will open soon.')
                                                         }}
                                                     >
                                                         <MintButton />
