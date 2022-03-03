@@ -9,7 +9,7 @@ export default function Minted({ handleClose }) {
             <div className="flex justify-center overflow-hidden">
                 <motion.div
                     onClick={(e) => e.stopPropagation()}
-                    className="w-3/4 relative"
+                    className="md:w-3/4 relative"
                     initial={{ scale: 0 }}
                     animate={{ rotate: 360, scale: [0, 1, 0.95] }}
                     transition={{
@@ -27,16 +27,18 @@ export default function Minted({ handleClose }) {
                     }}
                 >
                     <img draggable={false} src={MintedImg} alt="" />
-                    <p className="absolute right-14 top-48 text-white font-semibold text-lg leading-snug">
+                    <p className="absolute right-3 top-32 md:right-14 md:top-48 text-white font-semibold md:text-lg leading-snug">
                         Congrats! You succeessfully <br /> minted your Headbox, stay <br /> tuned to see what you got <br /> in your box!
                     </p>
                     <button
-                        className="absolute left-56 bottom-44 px-12 text-lg font-bold text-white py-2 rounded-md bg-[#9B92FF] border-4 border-white z-10 hover:bg-[#8781d6] hover:left-[14.2rem] hover:bottom-[10.8rem] transition-all duration-300 ease-in-out"
+                        className="absolute left-36 bottom-28 md:left-56 md:bottom-44 px-12 text-lg font-bold text-white py-2 rounded-md bg-[#9B92FF] border-4 border-white z-10 hover:bg-[#8781d6] hover:left-[14.2rem] hover:bottom-[10.8rem] transition-all duration-300 ease-in-out"
                         onClick={handleClose}
                     >
                         FINISH
                     </button>
-                    <button className="absolute left-[14.2rem] bottom-[10.8rem] px-12 text-lg font-bold text-white py-2 rounded-md bg-black border-4 border-black">FINISH</button>
+                    <button className="absolute left-[9.2rem] bottom-[6.8rem] md:left-[14.2rem] md:bottom-[10.8rem] px-12 text-lg font-bold text-white py-2 rounded-md bg-black border-4 border-black">
+                        FINISH
+                    </button>
                 </motion.div>
             </div>
         </Backdrop>

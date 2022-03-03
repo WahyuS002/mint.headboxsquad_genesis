@@ -224,23 +224,10 @@ function App() {
                                                 <div
                                                     onClick={(e) => {
                                                         e.preventDefault()
-                                                        // dispatch(connect())
-                                                        // getData()
-                                                        toast.info('Minting will open soon.')
+                                                        dispatch(connect())
+                                                        getData()
+                                                        // toast.info('Minting will open soon.')
                                                     }}
-                                                    className="hidden md:block"
-                                                >
-                                                    <MintButton />
-                                                    <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
-                                                        Connect
-                                                    </h3>
-                                                </div>
-                                                <div
-                                                    onClick={(e) => {
-                                                        e.preventDefault()
-                                                        setMintOnPhone(true)
-                                                    }}
-                                                    className="block md:hidden"
                                                 >
                                                     <MintButton />
                                                     <h3 className="absolute top-6 left-7 text-3xl text-gray-800 group-hover:text-gray-900 transition-all duration-200 ease-in-out font-semibold">
@@ -267,9 +254,9 @@ function App() {
                                                     <div
                                                         onClick={(e) => {
                                                             e.preventDefault()
-                                                            // claimNFTs()
-                                                            // getData()
-                                                            toast.info('Minting will open soon.')
+                                                            claimNFTs()
+                                                            getData()
+                                                            // toast.info('Minting will open soon.')
                                                         }}
                                                     >
                                                         <MintButton />
