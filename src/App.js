@@ -1,12 +1,12 @@
 import LeftButton from './components/svg/LeftWoodenSign'
 import AmountButton from './components/svg/AmountWoodenSign'
-import SmallAmountButton from './components/svg/SmallAmountWoodenSign'
 import RightButton from './components/svg/RightWoodenSign'
 import MintButton from './components/svg/MintWoodenSign'
 
 import bubbleMint from './assets/bubble mint.svg'
 
 import heroImg from './assets/mint hero.png'
+import logo from './assets/logo.png'
 
 import { connect } from './redux/blockchain/blockchainActions'
 import { fetchData } from './redux/data/dataActions'
@@ -171,9 +171,8 @@ function App() {
                 <div className="w-4/5 mx-auto">
                     <div className="flex flex-col-reverse md:flex-row md:h-screen">
                         <div className="m-auto md:w-1/2">
-                            <div className="relative">
-                                <h1 className="text-center font-bold text-5xl text-white">Headbox Squad</h1>
-                                <h1 className="text-center font-bold text-5xl absolute -right-[0.2rem] left-0 -bottom-[0.2rem] text-gray-800/40 -z-10">Headbox Squad</h1>
+                            <div className="flex justify-center">
+                                <img src={logo} alt="Logo" draggable={false} />
                             </div>
                             <div className="flex flex-col items-center ml-auto md:mt-8">
                                 <div className="hidden md:block">
