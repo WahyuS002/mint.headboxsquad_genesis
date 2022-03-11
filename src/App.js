@@ -56,7 +56,7 @@ function App() {
 
     const claimNFTs = () => {
         if (data.paused) {
-            toast.info('Minting has Paused.')
+            toast.info('Minting will open soon.')
         } else {
             if (data.currentWalletSupply + mintAmount > CONFIG.MAX_SUPPLY_PER_ADDRESS) {
                 toast.warning('You have exceeded the max limit of minting.')
@@ -221,7 +221,6 @@ function App() {
                                                         e.preventDefault()
                                                         dispatch(connect())
                                                         getData()
-                                                        // toast.info('Minting will open soon.')
                                                     }}
                                                 >
                                                     <MintButton />
@@ -251,7 +250,6 @@ function App() {
                                                             e.preventDefault()
                                                             claimNFTs()
                                                             getData()
-                                                            // toast.info('Minting will open soon.')
                                                         }}
                                                     >
                                                         <MintButton />
