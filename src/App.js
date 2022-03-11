@@ -17,7 +17,6 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import MintedModal from './components/Modal/Minted'
-import PhoneModal from './components/Modal/Phone'
 import Loading from './components/Loading'
 import useModal from './hooks/useModal'
 import { AnimatePresence } from 'framer-motion'
@@ -31,7 +30,6 @@ function App() {
     const data = useSelector((state) => state.data)
     const [claimingNft, setClaimingNft] = useState(false)
     const [mintAmount, setMintAmount] = useState(1)
-    const [mintOnPhone, setMintOnPhone] = useState(false)
 
     const [canIncrementAmount, setCanIncrementAmount] = useState(true)
     const [canDecrementAmount, setCanDecrementAmount] = useState(false)
@@ -150,9 +148,6 @@ function App() {
     return (
         <div className="font-grandstander selection:bg-purple-500">
             <ToastContainer />
-            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {mintOnPhone && <PhoneModal handleClose={() => setMintOnPhone(false)} />}
-            </AnimatePresence>
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {mintedModalOpen && <MintedModal handleClose={closeMintedModal} />}
             </AnimatePresence>

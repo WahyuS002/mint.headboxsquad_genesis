@@ -1,11 +1,11 @@
 {
-    "CONTRACT_ADDRESS": "0xa3A694544ace6F22e3bF14a511383C389a9E4aA7",
+    "CONTRACT_ADDRESS": "0x6B0298A7f3747d079A53B6667991e61711d6d225",
     "SCAN_LINK": "https://etherscan.io/address/0x6B0298A7f3747d079A53B6667991e61711d6d225",
     "MAX_SUPPLY_PER_ADDRESS": 20,
     "NETWORK": {
-        "NAME": "Rinkeby",
+        "NAME": "Ethereum",
         "SYMBOL": "ETH",
-        "ID": 4
+        "ID": 1
     },
     "NFT_NAME": "Headbox Squad",
     "SYMBOL": "HBS",
