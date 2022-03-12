@@ -170,7 +170,7 @@ function App() {
                                 <img src={logo} alt="Logo" draggable={false} />
                             </div>
                             <div className="flex flex-col items-center ml-auto md:mt-8">
-                                <div className="hidden md:block">
+                                <div>
                                     <div className="flex flex-wrap items-center space-x-5">
                                         <div
                                             className="relative cursor-pointer hover:-mt-1 transition-all duration-150 ease-in-out"
@@ -180,7 +180,7 @@ function App() {
                                             }}
                                         >
                                             <LeftButton color={canDecrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                            <span className="absolute top-3 md:top-5 right-6 md:right-8">
+                                            <span className="absolute top-2 md:top-5 right-4 md:right-8">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                                                     <path fillRule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                                                 </svg>
@@ -189,8 +189,8 @@ function App() {
                                         <div className="relative">
                                             <AmountButton />
                                             <h2
-                                                className={`absolute text-4xl md:text-5xl top-5 md:top-6 ${
-                                                    mintAmount >= 10 ? 'left-10 md:left-20' : 'left-[3rem] md:left-[5.5rem]'
+                                                className={`absolute text-4xl md:text-5xl top-4 md:top-6 ${
+                                                    mintAmount >= 10 ? 'left-10 md:left-20' : 'left-[4rem] md:left-[5.5rem]'
                                                 } text-gray-800 font-bold`}
                                             >
                                                 {mintAmount}
@@ -204,7 +204,7 @@ function App() {
                                             }}
                                         >
                                             <RightButton color={canIncrementAmount ? '#FAAE66' : '#FFEBD9'} />
-                                            <span className="absolute top-3 md:top-5 right-6 md:right-8">
+                                            <span className="absolute top-2 md:top-5 right-3 md:right-8">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                                                     <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                                                 </svg>
