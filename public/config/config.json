@@ -9,7 +9,7 @@
     },
     "NFT_NAME": "Headbox Squad",
     "SYMBOL": "HBS",
-    "MAX_SUPPLY": 7777,
+    "MAX_SUPPLY": 999,
     "WEI_COST": 20000000000000000,
     "DISPLAY_COST": 0.02,
     "GAS_LIMIT": 285000,

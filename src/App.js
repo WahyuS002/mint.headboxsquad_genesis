@@ -60,8 +60,8 @@ function App() {
         } else {
             if (data.currentWalletSupply + mintAmount > CONFIG.MAX_SUPPLY_PER_ADDRESS) {
                 toast.warning('You have exceeded the max limit of minting.')
-            } else if (data.totalSupply >= CONFIG.MAX_SUPPLY) {
-                toast.success('All items have been Sold 🥳')
+            } else if (parseInt(mintAmount) + parseInt(data.totalSupply) > CONFIG.MAX_SUPPLY) {
+                toast.warning('You have exceeded the max limit of minting.')
             } else {
                 let cost = data.cost
                 let gasLimit = CONFIG.GAS_LIMIT
